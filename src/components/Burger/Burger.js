@@ -9,7 +9,7 @@ const burger = (props) => {
   .map(igKey => {
     //this double map first returns an array of ingredients, then maps over that new array, duplicating items based on their quantity in state
     return [...Array(props.ingredients[igKey])].map((_, i)=> {
-      return <BurgerIngredient key={igKey +1} type={igKey} />
+      return <BurgerIngredient key={igKey + Math.random()} type={igKey} />
     })
   }).reduce((arr, el) => {
     return arr.concat(el)
