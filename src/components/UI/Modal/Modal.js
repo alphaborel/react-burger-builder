@@ -7,7 +7,7 @@ class Modal extends Component {
 
   //since this modal wraps the OrderSummary component, it doesn't need to always render OrderSummary unless the order button is actually clicked.
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show
+    return nextProps.show !== this.props.show || nextProps.children !== this.props.children
   }
 
   render() {
