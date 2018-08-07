@@ -113,7 +113,18 @@ class BurgerBuilder extends Component {
   //     console.log(error);
   //     this.setState({ loading: false, purchasing: false })
   //   })
-      this.props.history.push('/checkout')
+
+      //here we'll pass on an array with the user picked ingredients
+      const queryParams = []
+      for(let i in this.state.ingredients){
+        //encodeURIComponent is a JavaScript thing that encodes items to go through a URL. All the extra ?/= stuff is formatting the array for the URL. This is being done because the Checkout component is not connected to BurgerBuilder but needs the ingredients a user picked
+        queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+      }
+      const queryString = queryParams.join('&')
+      this.props.history.push({
+        pathname: '/checkout',
+        search: '?' + queryString
+      })
     }
 
   render() {
